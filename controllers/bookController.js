@@ -1,11 +1,14 @@
 const Book = require('../models/Book');
 const Review = require('../models/Review');
 
+
+// ####################### Create Book ###############################
 exports.createBook = async (req, res) => {
   const book = await Book.create({ ...req.body, createdBy: req.user._id });
   res.status(201).json(book);
 };
 
+// ####################### Get all Book ###############################
 exports.getAllBooks = async (req, res) => {
   const { author, genre, page = 1, limit = 10 } = req.query;
   const filter = {};
@@ -13,11 +16,12 @@ exports.getAllBooks = async (req, res) => {
   if (genre) filter.genre = genre;
 
   const books = await Book.find(filter)
-    .skip((page - 1) * limit)
+    .skip((page - 1) * limit)//pagintion
     .limit(Number(limit));
   res.json(books);
 };
 
+// ####################### Get signle book by Id ###############################
 exports.getBookById = async (req, res) => {
   const book = await Book.findById(req.params.id);
   const reviews = await Review.find({ book: book._id });
@@ -26,6 +30,7 @@ exports.getBookById = async (req, res) => {
   res.json({ ...book.toObject(), averageRating: avgRating.toFixed(1), reviews });
 };
 
+// ####################### Search Books ###############################
 exports.searchBooks = async (req, res) => {
   const { query } = req.query;
 

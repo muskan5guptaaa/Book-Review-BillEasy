@@ -7,6 +7,7 @@ const generateToken=(id)=>{
     });
 }
 
+// ####################### User Signup ###############################
 exports.signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -21,7 +22,7 @@ exports.signup = async (req, res) => {
   }
 };
 
-
+// ####################### User Login ###############################
     exports.login=async(req,res)=>{
         try{
      const{email,password}=req.body;
