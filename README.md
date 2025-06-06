@@ -14,6 +14,11 @@ A RESTful API built using Node.js, Express.js, and MongoDB that allows users to 
 
 ---
 
+## Deployed link for testing purpose
+https://book-review-billeasy-1.onrender.com
+
+---
+
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
@@ -53,8 +58,8 @@ The API will be running at: `http://localhost:5000`
 
 | Method | Endpoint      | Description             |
 |--------|---------------|-------------------------|
-| POST   | `/api/signup` | Register a new user     |
-| POST   | `/api/login`  | Login and return a token|
+| POST   | `/api/auth/signup` | Register a new user     |
+| POST   | `/api/auth/login`  | Login and return a token|
 
 ---
 
@@ -62,7 +67,7 @@ The API will be running at: `http://localhost:5000`
 
 | Method | Endpoint             | Description                          |
 |--------|----------------------|--------------------------------------|
-| POST   | `/api/books`         | Add a new book (Auth required)       |
+| POST   | `/api/books/create`         | Add a new book (Auth required)       |
 | GET    | `/api/books`         | Get all books (pagination supported) |
 | GET    | `/api/books/:id`     | Get book details with reviews        |
 | GET    | `/api/books/search`  | Search books by title or author      |
@@ -78,7 +83,7 @@ The API will be running at: `http://localhost:5000`
 
 | Method | Endpoint                        | Description                        |
 |--------|----------------------------------|------------------------------------|
-| POST   | `/api/books/:id/reviews`        | Add a review (one per user)        |
+| POST   | `/api/reviews/:id`              | Add a review (one per user)        |
 | PUT    | `/api/reviews/:id`              | Update your own review             |
 | DELETE | `/api/reviews/:id`              | Delete your own review             |
 
@@ -103,7 +108,7 @@ You can test all APIs using the provided Postman collection.
 - `{{bookId}}` – from create/get book
 - `{{reviewId}}` – from post/get book review
 
-> You can import the full collection from `book-review-api.postman_collection.json` file.
+> You can import the full collection from `https://api.postman.com/collections/37014870-4ec35f59-c0e4-45ac-a0a7-745054f24397?access_key=PMAT-01JX1N009FMX4WWEAC4FN48SAT` file.
 
 ---
 
